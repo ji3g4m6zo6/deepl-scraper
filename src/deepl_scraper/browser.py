@@ -64,8 +64,9 @@ class Browser:
     def choose_browser_binary(self):
         browser_binaries = {
             'Darwin': ['chromedriver_mac64', 'geckodriver_mac64'],
-            'Linux': ['chromedriver_linux64', 'geckodriver_linux64']
-        }
+            'Linux': ['chromedriver_linux64', 'geckodriver_linux64'],
+            'Windows': ['chromedriver.exe', 'geckodriver.exe']
+            }
         return browser_binaries.get(self.os)
 
     def restart(self):
