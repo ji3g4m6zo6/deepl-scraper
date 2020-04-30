@@ -14,7 +14,7 @@ class DeepLEngine():
         self.prepare()
 
     def get_supported_locales(self):
-        locales = ["EN", "DE", "FR", "ES", "PT", "IT", "NL", "PL", "RU"]
+        locales = {"EN":0, "DE":1, "FR":2, "ES":3, "PT":4, "IT":6, "NL":7, "PL":8, "RU":9, "JA":10, "ZH":11}
         return [locale.lower() for locale in locales]
 
     def prepare(self):
@@ -46,7 +46,7 @@ class DeepLEngine():
     def click_target_language(self, language_menu, language_code):
         buttons = language_menu.find_elements_by_tag_name("button")
         for button in buttons:
-            if button.get_attribute("dl-value") == language_code:
+            if button.get_attribute("dl-lang") == language_code:
                 time.sleep(2)
                 print(f"Choosing language code {language_code}")
                 button.click()
