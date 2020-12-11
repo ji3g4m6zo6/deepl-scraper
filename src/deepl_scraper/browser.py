@@ -54,6 +54,7 @@ class Browser:
         self.driver = webdriver.Chrome(
             ChromeDriverManager().install(),
             options=chrome_options)
+        self.driver.set_window_size(1440, 900)
 
     def start_firefox(self, name_of_driver_binary):
         firefox_options = FirefoxOptions()
