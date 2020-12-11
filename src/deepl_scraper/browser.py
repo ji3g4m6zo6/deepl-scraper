@@ -5,6 +5,7 @@ import subprocess
 import signal
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -51,8 +52,8 @@ class Browser:
         if self.headless is True:
             chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(
-            options=chrome_options,
-            executable_path=os.path.join(self.WEBDRIVERS_DIR, name_of_driver_binary))
+            ChromeDriverManager().install(),
+            options=chrome_options)
 
     def start_firefox(self, name_of_driver_binary):
         firefox_options = FirefoxOptions()
