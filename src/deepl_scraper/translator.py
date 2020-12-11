@@ -51,6 +51,7 @@ class DeepLEngine():
                 print(f"Choosing language code {language_code}")
                 button.click()
                 time.sleep(1)
+                return
 
     def translate(self, text):
         self.fill_input_field(text)
