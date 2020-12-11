@@ -51,9 +51,11 @@ class Browser:
     def start_chrome(self, name_of_driver_binary):
         chrome_options = ChromeOptions()
         if self.headless is True:
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(
-            ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install(),
+            ChromeDriverManager().install(),
             options=chrome_options)
         self.driver.set_window_size(1440, 900)
 
