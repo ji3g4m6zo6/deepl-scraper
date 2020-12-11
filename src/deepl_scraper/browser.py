@@ -6,6 +6,7 @@ import signal
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -52,7 +53,7 @@ class Browser:
         if self.headless is True:
             chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(
-            ChromeDriverManager().install(),
+            ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install(),
             options=chrome_options)
         self.driver.set_window_size(1440, 900)
 
