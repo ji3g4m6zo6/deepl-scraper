@@ -46,7 +46,7 @@ class DeepLEngine():
     def click_target_language(self, language_menu, language_code):
         buttons = language_menu.find_elements_by_tag_name("button")
         for button in buttons:
-            if button.get_attribute("dl-lang") == language_code:
+            if language_code.lower() in button.get_attribute("dl-test"):
                 time.sleep(2)
                 print(f"Choosing language code {language_code}")
                 button.click()
