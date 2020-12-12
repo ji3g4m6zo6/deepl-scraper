@@ -54,9 +54,13 @@ class Browser:
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
             chrome_options.add_argument("--headless")
-        self.driver = webdriver.Chrome(
-            ChromeDriverManager().install(),
-            options=chrome_options)
+        try:
+            self.driver = webdriver.Chrome(options=chrome_options)
+        except Exception as e:
+            print("Try to use ChromeDriverManager", e)
+            self.driver = webdriver.Chrome(
+                ChromeDriverManager().install(),
+                options=chrome_options)
         self.driver.set_window_size(1440, 900)
 
     def start_firefox(self, name_of_driver_binary):
